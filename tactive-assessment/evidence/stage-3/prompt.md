@@ -1,0 +1,1 @@
+> Add automatic charger reassignment when a charger fails during an active charging session. Identify the affected vehicle, find the best compatible available charger, move the vehicle when possible, otherwise place it at the front of the appropriate queue while preserving existing fairness and allocation rules.

@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Charger {
+  id        String   @id @default(uuid())
+  type      String   // e.g. "CCS", "Type 2"
+  status    String   @default("AVAILABLE") // AVAILABLE, RESERVED, CHARGING, FAULT, OFFLINE
+  vehicleId String?  // currently allocated vehicle
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Vehicle {
+  id        String   @id @default(uuid())
+  license   String   @unique
+  type      String   // e.g. "CCS", "Type 2"
+  status    String   @default("IDLE") // IDLE, QUEUED, CHARGING
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ChargingRequest {
+  id        String   @id @default(uuid())
+  vehicleId String
+  status    String   @default("PENDING") // PENDING, ALLOCATED, COMPLETED, INTERRUPTED
+  chargerId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
