@@ -50,6 +50,8 @@ export const allocateCharger = async (vehicleId: string, vehicleType: string) =>
 };
 
 export const processQueueForCharger = async (chargerId: string) => {
+  // Triggering another CI/CD pipeline run with this harmless log
+  console.log(`Processing queue for charger: ${chargerId}`);
   const charger = await prisma.charger.findUnique({ where: { id: chargerId } });
   if (!charger || charger.status !== 'AVAILABLE') return;
 
