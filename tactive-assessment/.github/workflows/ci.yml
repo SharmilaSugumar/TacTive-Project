@@ -43,7 +43,7 @@ jobs:
 
     - name: Install Frontend Dependencies
       working-directory: ./tactive-assessment/app/frontend
-      run: npm install
+      run: npm install --legacy-peer-deps
 
     - name: Build Frontend
       working-directory: ./tactive-assessment/app/frontend
