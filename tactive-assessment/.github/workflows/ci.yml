@@ -26,6 +26,10 @@ jobs:
       working-directory: ./tactive-assessment/app/backend
       run: npm run test
 
+    - name: Verify Allocation Engine Strict Coverage
+      working-directory: ./tactive-assessment/app/backend
+      run: npm run test:coverage
+
   build-frontend:
     runs-on: ubuntu-latest
     
