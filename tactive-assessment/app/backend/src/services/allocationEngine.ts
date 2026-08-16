@@ -1,6 +1,9 @@
 import prisma from './prisma';
 
 export const allocateCharger = async (vehicleId: string, vehicleType: string) => {
+  // Added for CI/CD testing verification
+  console.log('Executing allocation engine - CI/CD pipeline test');
+
   // 1. Check if vehicle is already in an active session
   const activeSession = await prisma.chargingRequest.findFirst({
     where: { vehicleId, status: { in: ['PENDING', 'ALLOCATED'] } }
